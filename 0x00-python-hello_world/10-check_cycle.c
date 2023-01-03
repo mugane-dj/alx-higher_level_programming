@@ -17,10 +17,10 @@ int check_cycle(listint_t *list)
 	if (list == NULL && list->next == NULL)
 		return (0);
 
-	slowptr = list->next;
-	fastptr = list->next->next;
+	slowptr = list;
+	fastptr = list->next;
 
-	while (slowptr && fastptr && fastptr->next)
+	while (fastptr && fastptr->next)
 	{
 		if (slowptr == fastptr)
 			return (1);
