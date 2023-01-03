@@ -4,7 +4,7 @@
 
 /**
  * check_cycle - checks if a singly linked list has a cycle using a
- *		 hash table.
+ *		 a fast and slow pointer.
  *
  * @list: singly linked list of type listint_t.
  * Return: 0 if there is no cycle, 1 if there is a cycle.
@@ -13,17 +13,23 @@
 int check_cycle(listint_t *list)
 {
 	listint_t *head;
-	listint_t *hash[HASH_SIZE] = {NULL};
+	listint_t *slowptr, *fastptr;
 
 	head = list;
 
-	while (head)
+	if (head == NULL && head->next == NULL)
+		return (0);
+
+	slowptr = head;
+	fastptr = head->next;
+
+	while (fastptr && fastptr->next)
 	{
-		if (hash[head->n % HASH_SIZE] == head)
+		if (slowptr == fastptr)
 			return (1);
 
-		hash[head->n % HASH_SIZE] = head;
-		head = head->next;
+		slowptr = slowptr->next;
+		fastptr = fastptr->next->next;
 	}
 
 	return (0);
