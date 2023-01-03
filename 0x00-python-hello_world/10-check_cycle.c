@@ -17,8 +17,8 @@ int check_cycle(listint_t *list)
 	if (list == NULL && list->next == NULL)
 		return (0);
 
-	slowptr = list;
-	fastptr = list->next;
+	slowptr = list->next;
+	fastptr = list->next->next;
 
 	while (slowptr && fastptr && fastptr->next)
 	{
