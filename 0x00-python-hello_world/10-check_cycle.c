@@ -12,18 +12,15 @@
 
 int check_cycle(listint_t *list)
 {
-	listint_t *head;
 	listint_t *slowptr, *fastptr;
 
-	head = list;
-
-	if (head == NULL && head->next == NULL)
+	if (list == NULL && list->next == NULL)
 		return (0);
 
-	slowptr = head;
-	fastptr = head->next;
+	slowptr = list;
+	fastptr = list->next;
 
-	while (fastptr && fastptr->next)
+	while (slowptr && fastptr && fastptr->next)
 	{
 		if (slowptr == fastptr)
 			return (1);
