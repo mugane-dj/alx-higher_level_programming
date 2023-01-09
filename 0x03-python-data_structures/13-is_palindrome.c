@@ -12,19 +12,32 @@
 int is_palindrome(listint_t **head)
 {
 	listint_t *current = *head;
-	listint_t *last;
+	int *stack = NULL;
+	int stack_size = 0;
+	int index = 0;
 
 	if (*head == NULL)
 		return (1);
 
-	last = *head;
-	while (last->next != NULL)
+	while (current)
 	{
-		if (current->n == last->n)
-			return (1);
-
-		last = last->next;
+		stack = realloc(stack, sizeof(int) * (stack_size + 1));
+		stack[stack_size++] = current->n;
+		current = current->next;
 	}
 
-	return (0);
+	current = *head;
+
+	while (current)
+	{
+		if (current->n != stack[index++])
+		{
+			free(stack);
+			return (0);
+		}
+
+		current = current->next;
+	}
+	free(stack);
+	return (1);
 }
