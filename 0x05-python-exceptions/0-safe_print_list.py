@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 def safe_print_list(my_list=[], x=0):
-    
+    """Prints specified number of elements."""
 
     no_of_elements = 0
     for element in range(x):
