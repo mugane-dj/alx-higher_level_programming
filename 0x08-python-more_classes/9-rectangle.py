@@ -73,7 +73,7 @@ class Rectangle:
     @classmethod
     def square(cls, size=0):
         """Returns a new rectangle instance with width==height==size"""
-        return clas(size, size)
+        return cls(size, size)
 
     def __str__(self):
         """Returns the unofficial representation of the Rectangle"""
