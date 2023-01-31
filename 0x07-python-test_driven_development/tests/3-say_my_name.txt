@@ -1,0 +1,42 @@
+==================
+Say my name module
+==================
+
+This module defines the ``say_my_name(first_name, last_name=""`` function.
+
+Usage
+======
+
+``say_my_name(...)`` prints the first and last name
+
+::
+
+TEST SUCCESS CASES:
+===================
+
+    >>> say_my_name = __import__('3-say_my_name').say_my_name
+    >>> say_my_name("Julien", "Vesper")
+    My name is Julien Vesper
+
+::
+
+    >>> say_my_name("Elliot")
+    My name is Elliot 
+
+::
+
+TEST FAILURE CASES:
+===================
+   >>> say_my_name(13, "Carter")
+   Traceback (most recent call last):
+   ...
+   TypeError: first_name must be a string
+
+::
+
+   >>> say_my_name("Carter", True)
+   Traceback (most recent call last):
+   ...
+   TypeError: last_name must be a string
+
+::
