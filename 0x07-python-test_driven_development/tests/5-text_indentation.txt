@@ -1,0 +1,49 @@
+=======================
+Text Indentation module
+=======================
+
+This module defines the ``text_indentation(text)`` function.
+
+Usage
+======
+
+``text_indentation(...)`` prints two new lines after specified characters
+
+::
+
+TEST SUCCESS CASES:
+===================
+
+    >>> text_indentation = __import__('5-text_indentation').text_indentation
+    >>> text = """Lorem ipsum dolor sit amet, consectetur adipiscing elit. \
+    ... Quonam modo? Non autem hoc: igitur ne illud quidem. \
+    ... Fortasse id optimum, sed ubi illud:"""
+    >>> text_indentation(text)
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    <BLANKLINE>
+    Quonam modo?
+    <BLANKLINE>
+    Non autem hoc:
+    <BLANKLINE>
+    igitur ne illud quidem.
+    <BLANKLINE>
+    Fortasse id optimum, sed ubi illud:
+    <BLANKLINE>
+
+::
+
+    >>> text_indentation("  The quick brown fox jumps over the lazy dog  ")
+    The quick brown fox jumps over the lazy dog
+
+::
+   >>> text_indentation("   ")
+
+TEST FAILURE CASES
+==================
+    >>> text_indentation(True)
+    Traceback (most recent call last):
+    ...
+    TypeError: text must be a string
+
+
+::
