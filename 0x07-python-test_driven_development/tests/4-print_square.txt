@@ -1,0 +1,60 @@
+===================
+Print square module
+===================
+
+This module defines the ``print_square(size)`` function.
+
+Usage
+======
+
+``print_square(...)`` prints a square using the # character.
+
+::
+
+TEST SUCCESS CASES:
+===================
+
+    >>> print_square = __import__('4-print_square').print_square
+    >>> print_square(0)
+    
+    >>> print_square(6)
+    ######
+    ######
+    ######
+    ######
+    ######
+    ######
+
+::
+
+    >>> print_square(4)
+    ####
+    ####
+    ####
+    ####
+
+::
+
+TEST FAILURE CASES:
+===================
+
+
+    >>> print_square(-1.52)
+    Traceback (most recent call last):
+    ...
+    TypeError: size must be an integer
+
+::
+
+    >>> print_square(-1)
+    Traceback (most recent call last):
+    ...
+    ValueError: size must be >= 0
+
+::
+
+    >>> print_square(4.5)
+    Traceback (most recent call last):
+    ...
+    TypeError: size must be an integer
+
