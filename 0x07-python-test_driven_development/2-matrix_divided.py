@@ -31,7 +31,7 @@ def matrix_divided(matrix, div):
 
     new_matrix = []
 
-    for lists in marix:
+    for lists in matrix:
         if type(lists) is not list:
             raise TypeError(error_msg)
         if len(lists) != len(matrix[0]):
