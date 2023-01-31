@@ -91,3 +91,17 @@ TEST ERROR CASES:
 
 
 ::
+
+	>>> matrix = [[1, 2], [4, 6], [8, 10]]
+	>>> matrix_divided(matrix)
+	Traceback (most recent call last):
+	TypeError: matrix_divided() missing 1 required positional argument: 'div'
+
+::
+
+	>>> matrix = [[1, 2], [4, 6], [8, 10]]
+	>>> matrix_divided(matrix, 2, 2.5)
+	Traceback (most recent call last):
+	TypeError: matrix_divided() takes 2 positional arguments but 3 were given
+
+::
