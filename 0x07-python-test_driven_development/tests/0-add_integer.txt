@@ -75,6 +75,12 @@ Test NaN (Non-numbers)
 
 ::
 
+
+   >>> add_integer(9, float('NaN'))
+   Traceback (most recent call last):
+   ...
+   ValueError: cannot convert float NaN to integer
+
 Test overflow
 =============
 
