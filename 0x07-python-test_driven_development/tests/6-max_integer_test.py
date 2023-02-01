@@ -10,7 +10,7 @@ class TestMaxInt(unittest.TestCase):
 
     def test_int_and_floats(self):
         self.assertEqual(max_int([5, 12, 78, 32]), 78)
-        self.assertEqual(max_int([0]), 0)
+        self.assertEqual(max_int([1]), 1)
         self.assertEqual(max_int([-24, 58, -72]), 58)
         self.assertEqual(max_int([-0.5, -3.4, -5.2]), -0.5)
 
