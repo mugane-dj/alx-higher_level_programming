@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 
 """Defines the JSON to object module"""
 import json
