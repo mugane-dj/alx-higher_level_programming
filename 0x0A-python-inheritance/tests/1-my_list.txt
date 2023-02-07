@@ -42,3 +42,33 @@ Usage
     TypeError: 'NoneType' object is not iterable
 
 ::
+
+    >>> my_list = MyList([-5, 6, -4])
+    
+::
+
+    >>> my_list = MyList([])
+    
+
+::
+Check if a new list is created when print_sorted is called
+==========================================================
+    >>> my_list = MyList()
+    >>> my_list.append(1)
+    >>> my_list.append(4)
+    >>> my_list.append(3)
+    >>> my_list.append(2)
+    >>> print(my_list)
+    [1, 4, 3, 2]
+
+::
+
+    >>> my_list.print_sorted()
+    [1, 2, 3, 4]
+
+::
+
+    >>> print(my_list)
+    [1, 4, 3, 2]
+
+::
