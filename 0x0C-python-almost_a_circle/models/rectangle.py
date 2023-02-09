@@ -89,15 +89,16 @@ class Rectangle(Base):
         """Prints the Rectangle instance with # in stdout"""
 
         if self.__width == 0 or self.__height == 0:
-            return ("")
+            print("")
 
-        rect = ""
-        for rows in range(0, self.__height):
-            width_rep = "#" * self.__width
-            rect += width_rep
-            if rows < self.__height - 1:
-                rect += "\n"
-        print(rect)
+        for i in range(self.__y, self.__y + self.__height):
+            for j in range(self.__x, self.__x + self.__width):
+                if ((i == self.__y or i == self.__y + self.__height - 1) or
+                        (j == self.__x or j == self.__x + self.__width - 1)):
+                    print("#", end="")
+                else:
+                    print(" ", end="")
+            print("")
 
     def __str__(self):
         """Override __str__() from Base class"""
