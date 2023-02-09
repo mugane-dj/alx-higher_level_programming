@@ -98,3 +98,10 @@ class Rectangle(Base):
             if rows < self.__height - 1:
                 rect += "\n"
         print(rect)
+
+    def __str__(self):
+        """Override __str__() from Base class"""
+
+        return "[Rectangle] ({}) {}/{} - {}/{}".format(self.id,
+                                                       self.x, self.y,
+                                                       self.width, self.height)
