@@ -90,15 +90,15 @@ class Rectangle(Base):
 
         if self.__width == 0 or self.__height == 0:
             print("")
+            return
 
-        for i in range(self.__y, self.__y + self.__height):
-            for j in range(self.__x, self.__x + self.__width):
-                if ((i == self.__y or i == self.__y + self.__height - 1) or
-                        (j == self.__x or j == self.__x + self.__width - 1)):
-                    print("#", end="")
-                else:
-                    print(" ", end="")
-            print("")
+        output = ""
+        output += "\n" * self.y
+        for h in range(self.height):
+            output += " " * self.x
+            output += "#" * self.width
+            output += "\n"
+        print(output)
 
     def __str__(self):
         """Override __str__() from Base class"""
