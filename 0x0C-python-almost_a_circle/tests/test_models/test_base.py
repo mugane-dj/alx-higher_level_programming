@@ -195,3 +195,7 @@ class Test_load_from_file(unittest.TestCase):
             os.remove("Rectangle.json")
         except IOError:
             pass
+
+
+if __name__ == "__main__":
+    unittest.main()
