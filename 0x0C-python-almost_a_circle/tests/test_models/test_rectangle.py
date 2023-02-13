@@ -4,8 +4,8 @@
 import unittest
 from models.base import Base
 from models.rectangle import Rectangle
-import io, sys
-
+import io
+import sys
 
 
 class Test_Rectangle_Instantiation(unittest.TestCase):
@@ -147,6 +147,7 @@ class Test_to_dictionary(unittest.TestCase):
         rect = Rectangle(10, 5, 2, 2, 7)
         with self.assertRaises(TypeError):
             rect.to_dictionary(1)
+
 
 class Test_update(unittest.TestCase):
     """Tests the update method"""
