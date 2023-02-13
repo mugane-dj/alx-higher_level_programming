@@ -97,7 +97,8 @@ class Rectangle(Base):
         for h in range(self.height):
             output += " " * self.x
             output += "#" * self.width
-            output += "\n"
+            if h != self.height - 1:
+                output += "\n"
         print(output)
 
     def __str__(self):
