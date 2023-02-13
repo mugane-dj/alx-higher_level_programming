@@ -131,6 +131,11 @@ class Test_create(unittest.TestCase):
         rect_1_dict = rect_1.to_dictionary()
         rect_2 = Rectangle.create(**rect_1_dict)
         self.assertNotEqual(rect_1, rect_2)
+
+    def test_create_rect_instance_2(self):
+        rect_1 = Rectangle(10, 6, 0, 0, 8)
+        rect_1_dict = rect_1.to_dictionary()
+        rect_2 = Rectangle.create(**rect_1_dict)
         self.assertIsNot(rect_1, rect_2)
 
     def test_create_dummy_square(self):
@@ -138,6 +143,11 @@ class Test_create(unittest.TestCase):
         s1_dict = s1.to_dictionary()
         s2 = Square.create(**s1_dict)
         self.assertNotEqual(s1, s2)
+    
+    def test_create_dummy_square_2(self):
+        s1 = Square(4, 1, 1, 8)
+        s1_dict = s1.to_dictionary()
+        s2 = Square.create(**s1_dict)
         self.assertIsNot(s1, s2)
 
 class Test_load_from_file(unittest.TestCase):
@@ -149,6 +159,12 @@ class Test_load_from_file(unittest.TestCase):
 
         Rectangle.save_to_file([rect_1, rect_2])
         self.assertEqual(str(rect_1), str(Rectangle.load_from_file()[0]))
+
+    def test_load_from_file_rect_instance_2(self):
+        rect_1 = Rectangle(10, 6, 2, 3, 8)
+        rect_2 = Rectangle(8, 7, 0, 0, 12)
+
+        Rectangle.save_to_file([rect_1, rect_2])
         self.assertEqual(str(rect_2), str(Rectangle.load_from_file()[1]))
 
     def test_load_from_file_square_instance(self):
@@ -157,6 +173,12 @@ class Test_load_from_file(unittest.TestCase):
 
         Square.save_to_file([s1, s2])
         self.assertEqual(str(s1), str(Square.load_from_file()[0]))
+
+    def test_load_from_file_square_instance_2(self):
+        s1 = Square(4, 0, 0, 3)
+        s2 = Square(6, 2, 2, 4)
+
+        Square.save_to_file([s1, s2])
         self.assertEqual(str(s2), str(Square.load_from_file()[1]))
 
     def test_load_from_file_extra_arg(self):
