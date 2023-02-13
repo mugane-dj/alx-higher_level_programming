@@ -40,6 +40,7 @@ class Test_Base_Instantiation(unittest.TestCase):
         b1 = Base(True)
         self.assertEqual(True, b1.id)
 
+
 class Test_to_json_string(unittest.TestCase):
     """Tests the to_json_string static method of Base class"""
     def test_to_json_string_rectangle_instance(self):
@@ -65,6 +66,7 @@ class Test_to_json_string(unittest.TestCase):
         with self.assertRaises(TypeError):
             Base.to_json_string([], 4)
 
+
 class Test_save_to_file(unittest.TestCase):
     """Tests the save_to_file class method"""
 
@@ -73,7 +75,7 @@ class Test_save_to_file(unittest.TestCase):
 
         with open("Base.json", "r", encoding="utf-8") as f:
             read_data = f.read()
-       
+
         self.assertEqual("[]", read_data)
 
     def test_save_to_file_empty_list(self):
@@ -86,7 +88,7 @@ class Test_save_to_file(unittest.TestCase):
             Base.save_to_file()
 
     def test_save_to_file_extra_arg(self):
-         with self.assertRaises(TypeError):
+        with self.assertRaises(TypeError):
             Base.save_to_file([], "hello")
 
     def test_exceptions(self):
@@ -94,6 +96,7 @@ class Test_save_to_file(unittest.TestCase):
             os.remove("Base.json")
         except IOError:
             pass
+
 
 class Test_from_json_string(unittest.TestCase):
     """Tests the from_json_string static method"""
@@ -124,6 +127,7 @@ class Test_from_json_string(unittest.TestCase):
         with self.assertRaises(TypeError):
             Base.from_json_string([], "world")
 
+
 class Test_create(unittest.TestCase):
     """Tests the create class method"""
     def test_create_rect_instance(self):
@@ -143,12 +147,13 @@ class Test_create(unittest.TestCase):
         s1_dict = s1.to_dictionary()
         s2 = Square.create(**s1_dict)
         self.assertNotEqual(s1, s2)
-    
+
     def test_create_dummy_square_2(self):
         s1 = Square(4, 1, 1, 8)
         s1_dict = s1.to_dictionary()
         s2 = Square.create(**s1_dict)
         self.assertIsNot(s1, s2)
+
 
 class Test_load_from_file(unittest.TestCase):
     """Tests the load_from_file class method"""
