@@ -90,26 +90,24 @@ class Test_display_method(unittest.TestCase):
     """Tests the display method"""
 
     @staticmethod
-    def output_stdout(rect, method):
+    def get_stdout(rect, method):
         """Get output printed to stdout"""
         output = io.StringIO()
         sys.stdout = output
-        if method == "print":
-            print(rect)
-        elif method == "display":
+        if method == "display":
             rect.display()
         sys.stdout = sys.__stdout__
         return output
 
     def test_correct_display_output(self):
         rect = Rectangle(3, 2)
-        output = Test_display_method.output_stdout(rect, "display")
+        output = Test_display_method.get_stdout(rect, "display")
         expected = "###\n###\n"
         self.assertEqual(expected, output.getvalue())
 
     def test_correct_display_output_2(self):
         rect = Rectangle(5, 3, 1, 1, 13)
-        output = Test_display_method.output_stdout(rect, "display")
+        output = Test_display_method.get_stdout(rect, "display")
         expected = "\n #####\n #####\n #####\n"
         self.assertEqual(expected, output.getvalue())
 
