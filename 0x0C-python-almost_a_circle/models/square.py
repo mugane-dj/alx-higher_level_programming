@@ -15,7 +15,7 @@ class Square(Rectangle):
         """Override __str__() from Rectangle class"""
 
         return "[Square] ({}) {}/{} - {}".format(self.id, self.x, self.y,
-                                                 self.height)
+                                                 self.width)
 
     @property
     def size(self):
@@ -41,12 +41,13 @@ class Square(Rectangle):
                     else:
                         self.id = arg
                 elif i == 1:
-                    self.size = size
-                elif i == 3:
+                    self.size = arg
+                elif i == 2:
                     self.x = arg
-                elif i == 4:
+                elif i == 3:
                     self.y = arg
-            i += 1
+                i += 1
+
         elif kwargs and len(kwargs) != 0:
             for key, value in kwargs.items():
                 if key == "id":
