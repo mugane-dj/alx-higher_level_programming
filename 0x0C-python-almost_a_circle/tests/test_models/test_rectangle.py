@@ -90,7 +90,7 @@ class Test_width_attribute(unittest.TestCase):
 
     def test_width_negative(self):
         with self.assertRaisesRegex(ValueError, "width must be > 0"):
-             Rectangle(-5, 4, 2, 2, 5)
+            Rectangle(-5, 4, 2, 2, 5)
 
     def test_width_zero(self):
         with self.assertRaisesRegex(ValueError, "width must be > 0"):
