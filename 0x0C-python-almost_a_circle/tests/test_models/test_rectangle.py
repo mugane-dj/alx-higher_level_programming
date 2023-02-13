@@ -118,5 +118,54 @@ class Test_display_method(unittest.TestCase):
             rect.display(1)
 
 
+class Test_to_dictionary(unittest.TestCase):
+    """Tests the to_dictionary method"""
+
+    def test_to_dictionary_correct(self):
+        rect = Rectangle(10, 5, 2, 2, 7)
+        expected = {
+            "id": 7,
+            "width": 10,
+            "height": 5,
+            "x": 2,
+            "y": 2,
+        }
+        self.assertEqual(expected, rect.to_dictionary())
+
+    def test_to_dictionary_error(self):
+        rect = Rectangle(10, 5, 2, 2, 7)
+        expected = {
+            "id": 10,
+            "width": 5,
+            "height": 2,
+            "x": 2,
+            "y": 7
+        }
+        self.assertNotEqual(expected, rect.to_dictionary())
+
+    def test_to_dictionary_extra_arg(self):
+        rect = Rectangle(10, 5, 2, 2, 7)
+        with self.assertRaises(TypeError):
+            rect.to_dictionary(1)
+
+class Test_update(unittest.TestCase):
+    """Tests the update method"""
+
+    def test_update_args(self):
+        rect = Rectangle(2, 4, 0, 0, 6)
+        rect.update(6, 2, 1, 1, 5)
+        self.assertEqual(str(rect), "[Rectangle] (6) 1/5 - 2/1")
+
+    def test_update_no_args(self):
+        rect = Rectangle(10, 5, 5, 5, 10)
+        rect.update()
+        self.assertEqual(str(rect), "[Rectangle] (10) 5/5 - 10/5")
+
+    def test_update_kwargs(self):
+        rect = Rectangle(10, 5, 5, 5, 10)
+        rect.update(id=5, width=5, height=5, x=1, y=1)
+        self.assertEqual(str(rect), "[Rectangle] (5) 1/1 - 5/5")
+
+
 if __name__ == "__main__":
     unittest.main()
