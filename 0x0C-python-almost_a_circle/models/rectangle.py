@@ -126,7 +126,8 @@ class Rectangle(Base):
                     self.x = arg
                 elif i == 4:
                     self.y = arg
-            i += 1
+                i += 1
+
         elif kwargs and len(kwargs) != 0:
             for key, value in kwargs.items():
                 if key == "id":
