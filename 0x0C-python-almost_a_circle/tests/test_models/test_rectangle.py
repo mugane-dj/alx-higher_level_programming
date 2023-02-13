@@ -61,6 +61,42 @@ class Test_Rectangle_Instantiation(unittest.TestCase):
         self.assertEqual(7, rect.id)
 
 
+class Test_width_attribute(unittest.TestCase):
+    """Test the behavior of width attribute"""
+
+    def test_width_none(self):
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            Rectangle(None, 6, 1, 1, 7)
+
+    def test_width_float(self):
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            Rectangle(5.6, 4, 2, 2, 5)
+
+    def test_width_list(self):
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            Rectangle([5, 6], 4, 2, 2, 5)
+
+    def test_width_dict(self):
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            Rectangle({5, 6}, 4, 2, 2, 5)
+
+    def test_width_tuple(self):
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            Rectangle((4, 2), 6, 1, 1, 7)
+
+    def test_width_str(self):
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            Rectangle("width", 10, 2, 3, 17)
+
+    def test_width_negative(self):
+        with self.assertRaisesRegex(ValueError, "width must be > 0"):
+             Rectangle(-5, 4, 2, 2, 5)
+
+    def test_width_zero(self):
+        with self.assertRaisesRegex(ValueError, "width must be > 0"):
+            Rectangle(0, 4, 2, 2, 5)
+
+
 class Test_str_method(unittest.TestCase):
     """Tests the __str__ method"""
 
