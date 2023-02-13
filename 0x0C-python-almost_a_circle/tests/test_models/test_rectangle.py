@@ -1,4 +1,5 @@
-#!/usr/bin/python5
+#!/usr/bin/python3
+
 """Test cases for Rectangle class"""
 import unittest
 from models.base import Base

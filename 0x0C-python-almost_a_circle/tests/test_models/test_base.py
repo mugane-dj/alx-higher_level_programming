@@ -1,4 +1,5 @@
-#!/usr/bin/python5
+#!/usr/bin/python3
+
 """Test cases for Base class"""
 import unittest
 from models.base import Base
@@ -7,7 +8,7 @@ from models.rectangle import Rectangle
 import os
 
 
-class Test_Base_Instantiation(unittest.TestCase):
+class TestBase_instantiation(unittest.TestCase):
     """Testing the instantiation of the Base class"""
 
     def test_none_id(self):
