@@ -60,6 +60,14 @@ class TestRectangle_Instantiation(unittest.TestCase):
         rect.id = 7
         self.assertEqual(7, rect.id)
 
+    def test_no_args(self):
+        with self.assertRaises(TypeError):
+            Rectangle()
+
+    def test_extra_args(self):
+        with self.assertRaises(TypeError):
+            Rectangle(6, 3, 1, 1, 4, 6)
+
 
 class Test_width_attribute(unittest.TestCase):
     """Test the behavior of width attribute"""
