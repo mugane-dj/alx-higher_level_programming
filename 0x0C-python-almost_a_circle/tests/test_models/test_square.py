@@ -12,11 +12,11 @@ import sys
 class TestSquare_instantiation(unittest.TestCase):
     """Test the instantiation of Square class"""
 
-    def test_inheritance_to_rectangle(self):
+    def test_is_rectangle(self):
         s = Square(10, 0, 0, 5)
         self.assertIsInstance(s, Rectangle)
 
-    def test_inheritance_to_base(self):
+    def test_is_base(self):
         s = Square(4, 1, 1, 3)
         self.assertIsInstance(s, Base)
 
@@ -28,6 +28,14 @@ class TestSquare_instantiation(unittest.TestCase):
         s = Square(10, 0, 0, 5)
         s.size = 12
         self.assertEqual(12, s.size)
+
+    def test_no_args(self):
+        with self.assertRaises(TypeError):
+            Square()
+
+    def test_extra_args(self):
+        with self.assertRaises(TypeError):
+            Square(6, 3, 1, 4, 6)
 
 
 class Test_size_attribute(unittest.TestCase):
@@ -55,6 +63,50 @@ class Test_size_attribute(unittest.TestCase):
     def test_size_tuple(self):
         with self.assertRaisesRegex(TypeError, "width must be an integer"):
             Square((1, 2), 4, 6, 8)
+
+
+class Test_display_method(unittest.TestCase):
+    """Tests the display method"""
+
+    @staticmethod
+    def get_stdout(s, method):
+        """Get output printed to stdout"""
+        output = io.StringIO()
+        sys.stdout = output
+        if method == "display":
+            s.display()
+        sys.stdout = sys.__stdout__
+        return output
+
+    def test_correct_display_output(self):
+        s = Square(3, 2)
+        output = Test_display_method.get_stdout(s, "display")
+        expected = "  ###\n  ###\n  ###\n"
+        self.assertEqual(expected, output.getvalue())
+
+    def test_correct_display_output_2(self):
+        s = Square(5, 3, 1, 1)
+        output = Test_display_method.get_stdout(s, "display")
+        expected = "\n   #####\n   #####\n   #####\n   #####\n   #####\n"
+        self.assertEqual(expected, output.getvalue())
+
+    def test_display_exception(self):
+        s = Square(4, 2, 2)
+        with self.assertRaises(TypeError):
+            s.display(1)
+
+
+class Test_area_method(unittest.TestCase):
+    """Test the area method on Square instance"""
+
+    def test_correct_area_output(self):
+        s = Square(10, 5)
+        self.assertEqual(100, s.area())
+
+    def test_error_area_output(self):
+        s = Square(10, 5)
+        with self.assertRaises(TypeError):
+            s.area(1)
 
 
 class Test_str_method(unittest.TestCase):
