@@ -8,7 +8,7 @@ import io
 import sys
 
 
-class Test_Rectangle_Instantiation(unittest.TestCase):
+class TestRectangle_Instantiation(unittest.TestCase):
     """Test the instantiation of Rectangle class"""
 
     def test_inheritance(self):
@@ -95,6 +95,74 @@ class Test_width_attribute(unittest.TestCase):
     def test_width_zero(self):
         with self.assertRaisesRegex(ValueError, "width must be > 0"):
             Rectangle(0, 4, 2, 2, 5)
+
+class Test_height_attribute(unittest.TestCase):
+    """Test the behavior of height attribute"""
+
+
+    def test_height_none(self):
+        with self.assertRaisesRegex(TypeError, "height must be an integer"):
+            Rectangle(6, None, 1, 1, 7)
+
+    def test_height_float(self):
+        with self.assertRaisesRegex(TypeError, "height must be an integer"):
+            Rectangle(5, 4.2, 2, 2, 5)
+
+    def test_height_list(self):
+        with self.assertRaisesRegex(TypeError, "height must be an integer"):
+            Rectangle(5, [6, 4], 2, 2, 5)
+
+    def test_height_dict(self):
+        with self.assertRaisesRegex(TypeError, "height must be an integer"):
+            Rectangle(5, {6, 4}, 2, 2, 5)
+
+    def test_height_tuple(self):
+        with self.assertRaisesRegex(TypeError, "height must be an integer"):
+            Rectangle(4, (2, 6), 1, 1, 7)
+
+    def test_height_str(self):
+        with self.assertRaisesRegex(TypeError, "height must be an integer"):
+            Rectangle(10, "height", 2, 3, 17)
+
+    def test_height_negative(self):
+        with self.assertRaisesRegex(ValueError, "height must be > 0"):
+            Rectangle(5, -4, 2, 2, 5)
+
+    def test_height_zero(self):
+        with self.assertRaisesRegex(ValueError, "height must be > 0"):
+            Rectangle(4, 0, 2, 2, 5)
+
+
+class Test_x_attribute(unittest.TestCase):
+    """Tests the x attribute"""
+
+    def test_x_none(self):
+        with self.assertRaisesRegex(TypeError, "x must be an integer"):
+            Rectangle(4, 6, None, 1, 7)
+
+    def test_x_float(self):
+        with self.assertRaisesRegex(TypeError, "x must be an integer"):
+            Rectangle(5, 4, 2.1, 2, 5)
+
+    def test_x_list(self):
+        with self.assertRaisesRegex(TypeError, "x must be an integer"):
+            Rectangle(5, 4, [2, 1], 2, 5)
+
+    def test_x_dict(self):
+        with self.assertRaisesRegex(TypeError, "x must be an integer"):
+            Rectangle(5, 6, {4, 2}, 2, 5)
+
+    def test_x_tuple(self):
+        with self.assertRaisesRegex(TypeError, "x must be an integer"):
+            Rectangle(4, 2, (6, 1), 1, 7)
+
+    def test_x_str(self):
+        with self.assertRaisesRegex(TypeError, "x must be an integer"):
+            Rectangle(5, 10, "x", 3, 17)
+
+    def test_x_negative(self):
+        with self.assertRaisesRegex(ValueError, "x must be >= 0"):
+            Rectangle(5, 4, -2, 2, 5)
 
 
 class Test_str_method(unittest.TestCase):
