@@ -1,2 +1,2 @@
 -- Prints the full description of the table first_table.
-EXEC sp_help first_table;
+SHOW COLUMNS FROM first_table;
