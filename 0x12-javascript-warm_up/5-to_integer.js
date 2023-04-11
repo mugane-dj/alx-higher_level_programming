@@ -1,8 +1,6 @@
 #!/usr/bin/node
-const process = require('node:process');
-const arg1 = process.argv[2];
-if (parseInt(arg1)) {
-  console.log('My number: ' + parseInt(arg1));
+if (parseInt(process.argv[2])) {
+  console.log('My number: ' + parseInt(process.argv[2]));
 } else {
   console.log('Not a number');
 }
