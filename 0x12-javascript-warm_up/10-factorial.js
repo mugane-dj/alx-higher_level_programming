@@ -1,5 +1,4 @@
 #!/usr/bin/node
-const process = require('node:process');
 function factorial (number) {
   const num = parseInt(number);
   if (!num) {
