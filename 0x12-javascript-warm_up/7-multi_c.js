@@ -2,8 +2,7 @@
 const process = require('node:process');
 const arg = process.argv[2];
 if (parseInt(arg)) {
-  const counter = parseInt(arg);
-  for (let i = 0; i < counter; i++) {
+  for (let i = 0; i < parseInt(arg); i++) {
     console.log('C is fun');
   }
 } else {
