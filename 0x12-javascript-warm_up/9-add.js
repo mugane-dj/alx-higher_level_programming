@@ -1,5 +1,4 @@
 #!/usr/bin/node
-const process = require('node:process');
 function add (a, b) {
   console.log(parseInt(a) + parseInt(b));
 }
