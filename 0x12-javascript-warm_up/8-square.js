@@ -1,10 +1,8 @@
 #!/usr/bin/node
-const process = require('node:process');
-const size = process.argv[2];
-if (parseInt(size)) {
-  for (let i = 0; i < parseInt(size); i++) {
+if (parseInt(process.argv[2])) {
+  for (let i = 0; i < parseInt(process.argv[2]); i++) {
     let pattern = '';
-    for (let j = 0; j < parseInt(size); j++) {
+    for (let j = 0; j < parseInt(process.argv[2]); j++) {
       pattern += 'x';
     }
     console.log(pattern);
