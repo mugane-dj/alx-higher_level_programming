@@ -9,7 +9,11 @@ db_name = sys.argv[3]
 db = MySQLdb.connect(host='localhost', port=3306, user=username,
                      password=password, database=db_name)
 cur = db.cursor()
-cur.execute("SELECT id, name FROM states WHERE states.name LIKE 'N%' ORDER BY states.id ASC")
+query = """
+    SELECT id, name FROM states WHERE states.name
+    LIKE 'N%' ORDER BY states.id ASC
+    """
+cur.execute(query)
 states = cur.fetchall()
 for state in states:
     print(state)
