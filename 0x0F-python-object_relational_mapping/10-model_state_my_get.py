@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """
-This module contains a script that lists State objects that
-contain 'a' from the database hbtn_0e_6_usa
+This module contains a script that lists State object that matches argument
+passed from the database hbtn_0e_6_usa
 """
 
 import sys
