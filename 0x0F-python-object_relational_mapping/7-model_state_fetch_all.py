@@ -9,7 +9,7 @@ from model_state import Base, State
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-if __name__ = '__main__':
+if __name__ == '__main__':
     user = sys.argv[1]
     password = sys.argv[2]
     db_name = sys.argv[3]
