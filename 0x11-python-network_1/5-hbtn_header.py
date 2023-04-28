@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""This script fetches headers from a url using requests lib"""
+"""This script fetches a header from a url using requests lib"""
 import requests
 import sys
 
