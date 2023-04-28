@@ -5,12 +5,13 @@ import sys
 
 
 if __name__ == "__main__":
-    if sys.argv[1]:
+    try:
         param = sys.argv[1]
-    else:
+    except IndexError:
         param = ""
-    url = "http://0.0.0.0:5000/search_user?q={}".format(param)
-    res = requests.post(url)
+    data = {'q': param}
+    url = "http://0.0.0.0:5000/search_user"
+    res = requests.post(url, data=data)
     try:
         output = res.json()
         if output:
