@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-# This script makes a post request to the url passed as argument
+"""This script makes a post request to the url passed as argument"""
 import requests
 import sys
 
