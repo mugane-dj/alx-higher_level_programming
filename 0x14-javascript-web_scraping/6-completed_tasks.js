@@ -12,44 +12,34 @@ const userURL = baseURL.replace('todos', 'users');
    are added to the todDict.
 */
 
-function getCompletedTodos (userId, callback) {
-  const todoURL = `${userURL}/${userId}/todos`;
-  request(todoURL, function (error, response, body) {
-    if (error) {
-      throw new Error(error);
-    }
-    const todos = JSON.parse(body);
-    let count = 0;
-    for (let i = 0; i < todos.length; i++) {
-      if (todos[i].completed === true) {
-        count += 1;
+request(userURL, function (error, response, body) {
+  if (error) {
+    throw new Error(error);
+  }
+  const users = JSON.parse(body);
+  const userIds = [];
+  const todosDict = {};
+  for (const user of users) {
+    userIds.push(user.id);
+  }
+  for (let i = 0; i < userIds.length; i++) {
+    const todoURL = `${userURL}/${userIds[i]}/todos`;
+    request(todoURL, function (error, response, body) {
+      if (error) {
+        throw new Error(error);
       }
-    }
-    callback(count);
-  });
-}
-
-function getUserTodos () {
-  request(userURL, function (error, response, body) {
-    if (error) {
-      throw new Error(error);
-    }
-    const users = JSON.parse(body);
-    const userIds = [];
-    const todosDict = {};
-    for (const user of users) {
-      userIds.push(user.id);
-    }
-    for (let i = 0; i < userIds.length; i++) {
-      getCompletedTodos(userIds[i], function (count) {
-        const key = userIds[i];
-        todosDict[key] = count;
-        if (Object.keys(todosDict).length === userIds.length) {
-          console.log(todosDict);
+      const todos = JSON.parse(body);
+      let count = 0;
+      for (let i = 0; i < todos.length; i++) {
+        if (todos[i].completed === true) {
+          count += 1;
         }
-      });
-    }
-  });
-}
-
-getUserTodos();
+      }
+      const key = userIds[i];
+      todosDict[key] = count;
+      if (Object.keys(todosDict).length === userIds.length) {
+        console.log(todosDict);
+      }
+    });
+  }
+});
