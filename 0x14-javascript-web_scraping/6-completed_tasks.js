@@ -18,7 +18,7 @@ function getCompletedTodos (userId, callback) {
     if (error) {
       throw new Error(error);
     }
-    const todos = (JSON.parse(body));
+    const todos = JSON.parse(body);
     let count = 0;
     for (let i = 0; i < todos.length; i++) {
       if (todos[i].completed === true) {
